@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public Camera Camera;
 
-    public Transform AimCircle;
-
     public float MoveSpeed;
     public float SprintSpeedMultiplier;
 
@@ -16,8 +14,23 @@ public class PlayerController : MonoBehaviour
 
     float _currentSprintSpeedMultiplier = 1f;
 
+    HealthMixin _healthMixin;
+
+    void Awake()
+    {
+        _healthMixin = GetComponent<HealthMixin>();
+    }
+
     void Update()
     {
+        if (_healthMixin.IsKilled)
+            return;
+
+        if (Input.GetKey(KeyCode.G))
+        {
+            _healthMixin.Damage(5f * Time.deltaTime);
+        }
+
         Vector3 movementInput = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -48,9 +61,5 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position += movementInput.normalized * (MoveSpeed * _currentSprintSpeedMultiplier * Time.deltaTime);
-
-        Vector3 localEulerAngles = AimCircle.transform.localEulerAngles;
-        localEulerAngles.y = -MathUtils.AngleTo(Camera.WorldToScreenPoint(AimCircle.transform.position), Input.mousePosition);
-        AimCircle.transform.localEulerAngles = localEulerAngles;
     }
 }

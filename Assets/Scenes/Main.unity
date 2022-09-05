@@ -132,7 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23336745}
-  m_Layer: 0
+  - component: {fileID: 23336746}
+  m_Layer: 2
   m_Name: AimCircleRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +155,23 @@ Transform:
   m_Father: {fileID: 718216469}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &23336746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23336744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6417cf377e6393042b7b4beefa82ff1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthMixin: {fileID: 718216471}
+  LerpColorOnDamage: 1
+  Renderer: {fileID: 1345823736}
+  FullHealthColor: {r: 0.21226418, g: 1, b: 0.21508059, a: 1}
+  NoHealthColor: {r: 0.9716981, g: 0, b: 0, a: 0.44705883}
 --- !u!1 &659125195
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +277,7 @@ GameObject:
   - component: {fileID: 718216467}
   - component: {fileID: 718216466}
   - component: {fileID: 718216470}
+  - component: {fileID: 718216471}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -358,11 +377,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1210274140}
-  AimCircle: {fileID: 23336745}
   MoveSpeed: 8
   SprintSpeedMultiplier: 2.5
   SprintAcceleration: 3
   SprintDecceleration: 5
+--- !u!114 &718216471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718216465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9646505235cb8b4faa6009eedfc6cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
 --- !u!1 &933306206
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +501,7 @@ GameObject:
   - component: {fileID: 1210274141}
   - component: {fileID: 1210274140}
   - component: {fileID: 1210274139}
+  - component: {fileID: 1210274142}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -542,6 +574,18 @@ Transform:
   m_Father: {fileID: 1720779110}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1210274142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210274138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5c3bb70544cde42b5b192166cce0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345823733
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,8 +597,7 @@ GameObject:
   - component: {fileID: 1345823734}
   - component: {fileID: 1345823737}
   - component: {fileID: 1345823736}
-  - component: {fileID: 1345823735}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AimCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,20 +618,6 @@ Transform:
   m_Father: {fileID: 23336745}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
---- !u!64 &1345823735
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345823733}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1345823736
 MeshRenderer:
   m_ObjectHideFlags: 0
